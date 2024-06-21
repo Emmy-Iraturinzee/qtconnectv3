@@ -405,6 +405,10 @@ button:focus,
   border: 1px solid #fff;
   padding: 13px 50px;
 }
+.btn-rounded-icon1{
+  border: 1px solid #054c6a !important;
+  color: #054c6a !important;
+}
 
 .main-nav {
 background-color: #d21f1f00;
@@ -445,7 +449,7 @@ background-color: #d21f1f00;
 }
 
 .main-nav .navbar-nav .nav-item.active .nav-link {
-  color: #2e7eed;
+  color: #075b93;
 }
 
 .main-nav .navbar-nav .nav-item.active .nav-link:before {
