@@ -1,195 +1,260 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
+    <meta charset="utf-8">
+    <title>QT Connect v2 - Secure Communication</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="QT Connect - Secure, private messaging and calling for everyone.">
+    <link rel="shortcut icon" href="images/qt_global_logo-removebg-preview (3).png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a2342 0%, #19376d 100%);
+            color: #eaf0fa;
+   
+            min-height: 100vh;
+        }
+        .navbar {
+            background: #122b50;
+            border-bottom: 1px solid #19376d;
+        }
+        .navbar-brand img {
+            height: 48px;
+        }
+        .nav-link {
+            color: #eaf0fa !important;
+            font-weight: normal;
+            letter-spacing: .5px;
+            padding: 15px !important;
+            text-transform: uppercase;
+            font-size: 15px;
+        }
 
-
-  <meta charset="utf-8">
-  <title>QT Connect v.2</title>
-
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="QTConnect (QT Messenger) End-to-end secure communications for voice, messaging and group chat on everyday smartphones">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="author" content="QT Global Software LTD">
-  <meta name="generator" content="QTConnect (QT Messenger) End-to-end secure communications for voice, messaging and group chat on everyday smartphones">
-
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="images/qt_global_logo-removebg-preview (3).png" />
-  
-  <!-- PLUGINS CSS STYLE -->
-  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
-  <link rel="stylesheet" href="plugins/slick/slick.css">
-  <link rel="stylesheet" href="plugins/slick/slick-theme.css">
-  <link rel="stylesheet" href="plugins/fancybox/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="plugins/aos/aos.css">
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-  <!-- CUSTOM CSS -->
-  <link href="css/style.css" rel="stylesheet">
-
+        .nav-link:hover {
+            color: #7ec8e3 !important;
+        }
+        .hero-section {
+            padding: 90px 0 60px 0;
+            background: linear-gradient(120deg, #19376d 70%, #0a2342 100%);
+            text-align: center;
+        }
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #7ec8e3;
+            margin-bottom: 20px;
+        }
+        .hero-section p {
+            font-size: 1.25rem;
+            color: #eaf0fa;
+            margin-bottom: 36px;
+            font-weight: lighter;
+        }
+        p{
+            font-weight: lighter;
+        }
+        .hero-img {
+            max-width: 320px;
+            margin-bottom: 32px;
+            border-radius: 24px;
+      
+        }
+        h2{
+            font-weight: lighter!important;
+            padding: 12px 0;
+        }
+        .btn-rounded-icon {
+            border-radius: 32px;
+            padding: 12px 32px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: #19376d;
+            color: #fff;
+            border: none;
+            margin: 8px;
+            transition: background .2s;
+            box-shadow: 0 2px 8px rgba(20,40,80,0.18);
+        }
+        .btn-rounded-icon i {
+            margin-right: 7px;
+            font-size: 1.3em;
+            vertical-align: middle;
+        }
+        .btn-rounded-icon:hover {
+            background: #7ec8e3;
+            color: #0a2342;
+        }
+        .features-section {
+            background: #122b50;
+            padding: 70px 0;
+        }
+        .feature-card {
+            background: #19376d;
+            border-radius: 18px;
+            padding: 32px 24px;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 16px rgba(20,40,80,0.13);
+            text-align: center;
+            color: #eaf0fa;
+       
+        }
+        .feature-card i {
+            font-size: 2.5em;
+            color: #7ec8e3;
+            margin-bottom: 16px;
+        }
+        .feature-card h5 {
+            font-weight: 600;
+            color: #7ec8e3;
+            margin-bottom: 14px;
+        }
+        .download-section {
+            background: linear-gradient(120deg, #19376d 70%, #0a2342 100%);
+            padding: 70px 0;
+            text-align: center;
+        }
+        .download-section h2 {
+            color: #7ec8e3;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+        .download-section p {
+            color: #eaf0fa;
+            margin-bottom: 32px;
+        }
+        .footer-main {
+            background: #122b50;
+            padding: 40px 0 10px 0;
+            text-align: center;
+        }
+        .footer-main img {
+            width: 160px;
+            margin-bottom: 20px;
+        }
+        .social-icon a {
+            color: #7ec8e3;
+            font-size: 1.4em;
+            margin: 0 10px;
+            transition: color .2s;
+        }
+        .social-icon a:hover {
+            color: #eaf0fa;
+        }
+        .footer-bottom {
+            background: #0a2342;
+            color: #eaf0fa;
+            padding: 12px 0;
+            font-size: .96em;
+        }
+        @media (max-width: 768px) {
+            .hero-section h1 { font-size: 2.2rem; }
+            .features-section { padding: 40px 0; }
+            .download-section { padding: 40px 0; }
+        }
+    </style>
 </head>
-
-<body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
-
-
-<nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0">
-  <div class="container">
-    <a class="navbar-brand" href="index.html"><img src="images/qt_global_logo-removebg-preview (3).png" alt="logo" class="logo-main"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="ti-menu"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown active">
-          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Home
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" id="mainNavbar" style="backdrop-filter:none; transition:background 0.3s, backdrop-filter 0.3s;">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="logo/logo-white.png" alt="QT Connect"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#download">Download</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <script>
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('mainNavbar');
+            if (window.scrollY > 30) {
+                nav.style.background = 'rgba(18,43,80,0.85)';
+                nav.style.backdropFilter = 'blur(12px)';
+                nav.querySelectorAll('.nav-link').forEach(link => {
+                    link.style.color = '#19376d';
+                });
+            } else {
+                nav.style.background = '#122b50';
+                nav.style.backdropFilter = 'none';
+                nav.querySelectorAll('.nav-link').forEach(link => {
+                    link.style.color = '#eaf0fa';
+                });
+            }
+        });
+    </script>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <img src="images/qtv2.png" class="hero-img mb-4" style="max-width: 44%; box-shadow: 0 8px 32px rgba(20,40,80,0.18);" alt="QT Connect App">
+            <h1>QT Connect v2</h1>
+            <p>
+                Secure, private messaging and crystal-clear calling.<br>
+                Built in Rwanda. Trusted worldwide.<br>
+                Available for iOS, Android, and Desktop.
+            </p>
+            <div id="download-buttons" class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+                <a id="main-download-btn" href="#" class="btn btn-rounded-icon shadow-sm">
+                    <i class="ti-desktop"></i> Desktop
+                </a>
+                <a href="https://apps.apple.com/us/app/qtconnect-2-0/id6743532476" class="btn btn-rounded-icon shadow-sm">
+                    <i class="ti-apple"></i> iPhone
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.qtsoftware.qtconnect" class="btn btn-rounded-icon shadow-sm">
+                    <i class="ti-android"></i> Android
+                </a>
+            </div>
          
-          </a>
-      
-        </li>
-      
-    
-        <li class="nav-item @@contact">
-          <a class="nav-link" href="#aos">Android</a>
-        </li>
-		<li class="nav-item @@contact">
-			<a class="nav-link" href="#ios">IOS</a>
-		  </li>
-		  <li class="nav-item @@contact">
-			<a class="nav-link" href="#desktop">Desktop</a>
-		  </li>
-		  <li class="nav-item @@contact">
-			<a class="nav-link" href="mailto: info@qtsoftwareltd.com">Contact</a>
-		  </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+        </div>
+    </section>
 
-<!--====================================
-=            Hero Section            =
-=====================================-->
-<section class="section gradient-banner">
-	<div class="shapes-container">
-		<div class="shape" data-aos="fade-down-left" data-aos-duration="1500" data-aos-delay="100"></div>
-		<div class="shape" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100"></div>
-		<div class="shape" data-aos="fade-up-right" data-aos-duration="1000" data-aos-delay="200"></div>
-		<div class="shape" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"></div>
-		<div class="shape" data-aos="fade-down-left" data-aos-duration="1000" data-aos-delay="100"></div>
-		<div class="shape" data-aos="fade-down-left" data-aos-duration="1000" data-aos-delay="100"></div>
-		<div class="shape" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300"></div>
-		<div class="shape" data-aos="fade-down-right" data-aos-duration="500" data-aos-delay="200"></div>
-		<div class="shape" data-aos="fade-down-right" data-aos-duration="500" data-aos-delay="100"></div>
-		<div class="shape" data-aos="zoom-out" data-aos-duration="2000" data-aos-delay="500"></div>
-		<div class="shape" data-aos="fade-up-right" data-aos-duration="500" data-aos-delay="200"></div>
-		<div class="shape" data-aos="fade-down-left" data-aos-duration="500" data-aos-delay="100"></div>
-		<div class="shape" data-aos="fade-up" data-aos-duration="500" data-aos-delay="0"></div>
-		<div class="shape" data-aos="fade-down" data-aos-duration="500" data-aos-delay="0"></div>
-		<div class="shape" data-aos="fade-up-right" data-aos-duration="500" data-aos-delay="100"></div>
-		<div class="shape" data-aos="fade-down-left" data-aos-duration="500" data-aos-delay="0"></div>
-	</div>
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-md-6 order-2 order-md-1 text-center text-md-left">
-				<h1 class="text-white font-weight-bold mb-4">QT Connect </h1>
-				<p class="text-white mb-5">QT Connect is an end -to- end secure communication application that is made
-					 in Rwanda with the aim to secure instant messaging in its entirety.</p>
-					<ul class="list-inline">
-						<li class="list-inline-item">
-							<a href="https://apps.apple.com/us/app/qtconnect/id1422611273" class="btn btn-rounded-icon">
-								<i class="ti-apple"></i>
-								Iphone
-							</a>
-						</li>
-						<li class="list-inline-item">
-							<a href="https://play.google.com/store/apps/details?id=com.qtsoftware.qtconnect" class="btn btn-rounded-icon">
-								<i class="ti-android"></i>
-								Android
-							</a>
-						</li>
-						
-					</ul>
-			</div>
-			<div class="col-md-6 text-center order-1 order-md-2" data-aos="fade-left">
-				<img class="img-fluid" src="https://res.cloudinary.com/dvxyowyam/image/upload/v1717756447/boxshadow-connect_szng5j.png" alt="screenshot" width="400">
-			</div>
-		</div>
-	</div>
-</section>
-<!--====  End of Hero Section  ====-->
-
-<!-- <section class="section pt-0 position-relative pull-top">
-	<div class="container">
-		<div class="rounded shadow p-5 bg-white">
-			<div class="row">
-				<div class="col-lg-4 col-md-6 mt-5 mt-md-0 text-center">
-					<i class="ti-comments  h1"></i>
-					<h3 class="mt-4 text-capitalize h5 ">Messaging</h3>
-					<p class="regular text-muted">Secure and reliable one to one and group instant messaging features.</p>
-				</div>
-				<div class="col-lg-4 col-md-6 mt-5 mt-md-0 text-center">
-					<i class="ti-share  h1"></i>
-					<h3 class="mt-4 text-capitalize h5 ">Sharing files and media</h3>
-					<p class="regular text-muted">Enhance everyday productivity by sending PDFs, documents, and high-quality media instantly!</p>
-				</div>
-				<div class="col-lg-4 col-md-12 mt-5 mt-lg-0 text-center">
-					<i class="ti-microphone h1"></i>
-					<h3 class="mt-4 text-capitalize h5 ">Voice calls</h3>
-					<p class="regular text-muted">Make and receive highly secure calls from your QT Connect contacts, free of charge.</p>
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</section> -->
-
-<!--==================================
-=            Feature Grid            =
-===================================-->
-<section class="feature section pt-0" id="ios">
+    <!-- iOS Section -->
+    <section class="feature section pt-0 mt-5" id="ios" style="max-width:900px;margin:auto;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 ml-auto justify-content-center">
+                    <!-- Feature Mockup -->
+                    <div class="image-content" data-aos="fade-right">
+                        <img class="img-fluid" src="https://res.cloudinary.com/dvxyowyam/image/upload/v1715745906/qrped_pdzhwd.png" alt="iphone" width="550">
+                    </div>
+                </div>
+                <div class="col-lg-6 mr-auto align-self-center">
+                    <div class="feature-content">
+                        <!-- Feature Title -->
+                        <h2>Compatible with IOS</h2>
+                        <!-- Feature Description -->
+                        <p class="desc">If you are using the Mobile Phone that runs IOS Operating system,
+                             You can download the App by clicking on the button below.</p>
+                    </div>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"></li>
+                            <a href="https://apps.apple.com/us/app/qtconnect-2-0/id6743532476" class="btn btn-rounded-icon btn-rounded-icon1 ">
+                                <i class="ti-apple"></i>
+                                Iphone
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Android Section -->
+<section class="feature section pt-0" id="aos" style="max-width:900px;margin:auto;">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-6 ml-auto justify-content-center">
-				<!-- Feature Mockup -->
-				<div class="image-content" data-aos="fade-right">
-					<img class="img-fluid" src="https://res.cloudinary.com/dvxyowyam/image/upload/v1715745906/qrped_pdzhwd.png" alt="iphone" width="550">
-				</div>
-			</div>
-			<div class="col-lg-6 mr-auto align-self-center">
-				<div class="feature-content">
+			<div class="col-lg-6 ml-auto align-self-center mx-52" >
+				<div class="feature-content" >
 					<!-- Feature Title -->
-					<h2>Compatible with IOS</h2>
+					<h2>Desktop version </h2>
 					<!-- Feature Description -->
-					<p class="desc">If you are using the Mobile Phone that runs IOS Operating system,
-						 You can download the App by clicking on the button below.</p>
-				</div>
-				<ul class="list-inline">
-					<li class="list-inline-item">
-						<a href="https://apps.apple.com/us/app/qtconnect/id1422611273" class="btn btn-rounded-icon btn-rounded-icon1 ">
-							<i class="ti-apple"></i>
-							Iphone
-						</a>
-					</li>
-				
-					
-				</ul>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section class="feature section pt-0" id="aos">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6 ml-auto align-self-center mx-52">
-				<div class="feature-content">
-					<!-- Feature Title -->
-					<h2>Compatible with Android </h2>
-					<!-- Feature Description -->
-					<p>If you are using the Mobile Phone that runs IOS Operating system, You can download the App by clicking on the button below.</p>
+					<p>If you are using the Mobile Phone that runs AOS Operating system, You can download the App by clicking on the button below.</p>
 				</div>
 				<ul class="list-inline">
 					<li class="list-inline-item">
@@ -206,131 +271,105 @@
 			<div class="col-lg-6 mr-auto justify-content-center">
 				<!-- Feature mockup -->
 				<div class="image-content" data-aos="fade-left">
-					<img class="img-fluid" src="https://res.cloudinary.com/dvxyowyam/image/upload/v1718697130/chat.qt.4b97b36428dfcecf446e_1_kjbuue.png" width="220" alt="ipad">
+					<img class="img-fluid" src="images/qtaosss.png" width="220" style="padding: 10px;" alt="ipad">
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-<!--====  End of Feature Grid  ====-->
-
-<!--==============================
-=            Services            =
-===============================-->
-<section class="service section bg-gray">
-	<div class="container-fluid p-0">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="section-title">
-					<h2>Technological scope and Features </h2>
-					<p>Available for iOS and Android users, the application is lightweight and robust to accommodate updates and scalability..</p>
-				</div>
-			</div>
-		</div>
-		<div class="row no-gutters">
-			<div class="col-lg-6 align-self-center">
-				<!-- Feature Image -->
-				<div class="service-thumb left" data-aos="fade-right">
-					<img class="img-fluid img-fluid1" src="https://res.cloudinary.com/dvxyowyam/image/upload/v1716297003/ddedgeydegdy_n4s7vb.jpg" width=""   alt="iphone-ipad">
-				</div>
-			</div>
-			<div class="col-lg-5 mr-auto align-self-center">
-				<div class="service-box">
-					<div class="row align-items-center">
-						<div class="col-md-6 col-xs-12">
-							<!-- Service 01 -->
-							<div class="service-item">
-								<!-- Icon -->
-								<i class="ti-share  h1"></i>
-								<!-- Heading -->
-								<h3>Sharing files and media</h3>
-								<!-- Description -->
-								<p>Enhance everyday productivity by sending PDFs, documents, and high-quality media instantly! </p>
-							</div>
-						</div>
-						<div class="col-md-6 col-xs-12">
-							<!-- Service 01 -->
-							<div class="service-item">
-								<!-- Icon -->
-								<i class="ti-desktop"></i>
-								<!-- Heading -->
-								<h3>Desktop version</h3>
-								<!-- Description -->
-								<p>Access to all conversations and groups synchronously on the desktop platform</p>
-							</div>
-						</div>
-						<div class="col-md-6 col-xs-12">
-							<!-- Service 01 -->
-							<div class="service-item">
-								<!-- Icon -->
-								<i class="ti-microphone h1"></i>
-								<!-- Heading -->
-								<h3>Voice calls </h3>
-								<!-- Description -->
-								<p>Make and receive highly secure calls from your QT Connect contacts, free of charge.</p>
-							</div>
-						</div>
-						<div class="col-md-6 col-xs-12">
-							<!-- Service 01 -->
-							<div class="service-item">
-								<!-- Icon -->
-								<i class="ti-comments  h1"></i>
-								<!-- Heading -->
-								<h3>Messaging</h3>
-								<!-- Description -->
-								<p>Secure and reliable one to one and group instant messaging features</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!--====  End of Services  ====-->
 
 
-
-
-
-
-
-<section class="call-to-action-app section bg-blue" id="desktop">
-
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<h2>QT Connect Destop Application</h2>
-				<p>To use the QT Connect App on the Desktop,<br> Click on one of the buttons bellow that corresponds to the Operating System You are using.</p>
-				<ul class="list-inline">
-					<li class="list-inline-item">
-						<a href="Files/QTConnect_v38.14997e66d258519006f2.dmg" class="btn btn-rounded-icon" >
-							<i class="ti-apple"></i>
-							MacBook
-						</a>
-					</li>
-					<li class="list-inline-item">
-						<a href="Files/QTConnect_v1.3.2-linux.f9a0482fb6ad542748f8 (2).zip" class="btn btn-rounded-icon">
-							<i class="ti-linux"></i>
-							Linux
-						</a>
-					</li>
-					<li class="list-inline-item">
-						<a href="Files/qtconnectsetup.67ccd0ceeb573961a620 (1).exe" class="btn btn-rounded-icon">
-							<i class="ti-microsoft-alt"></i>
-							Windows
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!--============================
-=            Footer            =
-=============================-->
-<footer>
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4" style="color:#7ec8e3;font-weight:700;">Technological Scope & Features</h2>
+                    <p>Lightweight, robust, and scalable. QT Connect ensures your privacy and productivity with every message and call.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <i class="ti-comments"></i>
+                        <h5>Secure Messaging</h5>
+                        <p>End-to-end encrypted one-to-one & group chats. Your privacy, guaranteed.</p>
+                    </div>
+                </div>
+                      <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                   <i class="ti-microphone"></i>
+                        <h5>Voice Calls</h5>
+                        <p>Crystal-clear, secure calls. Connect with anyone, anywhere—free of charge.</p>
+                    </div>
+                </div>
+    
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <i class="ti-share"></i>
+                        <h5>File & Media Sharing</h5>
+                        <p>Send documents, PDFs, and high-quality media instantly and safely. Effortlessly share your files.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <i class="ti-desktop"></i>
+                        <h5>Desktop Sync</h5>
+                        <p>Access all your chats and groups seamlessly on your desktop platform.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Download Section -->
+    <section class="download-section" id="download">
+        <div class="container">
+            <h2>Download QT Connect for Desktop</h2>
+            <p>To use the QT Connect App on the Desktop,<br>
+Click on one of the buttons bellow that corresponds to the Operating System You are using.</p>
+            <div>
+                <a href="https://drive.google.com/file/d/1pTFz0pO7FRNboG0HG1MB6oE0-RxAolf5/view" class="btn btn-rounded-icon"><i class="ti-apple"></i> MacOS</a>
+                <a href="https://drive.google.com/file/d/17YS4nei24aP25RsvhXkZ655Pc16FC4zn/view?usp=sharing" class="btn btn-rounded-icon"><i class="ti-linux"></i> Linux</a>
+                <a href="https://drive.google.com/file/d/1SIcU_7aao4IFa3fYr9WhZjvuNZqpQO7m/view" class="btn btn-rounded-icon"><i class="ti-microsoft-alt"></i> Windows</a>
+            </div>
+        </div>
+    </section>
+    <!-- Stay Up Connected Section -->
+    <section class="features-section" id="stay-connected" style="background: #f8fafc; color: #19376d; padding: 70px 0;">
+        <div class="container">
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-8 text-center">
+                    <h2 style="color:#19376d;font-weight:700;">Stay Up Connected</h2>
+                    <p>Never miss a moment. QT Connect keeps you in touch with friends, family, and colleagues—wherever you are, whenever you need.</p>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card" style="background:#fff; color:#19376d;">
+                        <i class="ti-bell" style="color:#7ec8e3;"></i>
+                        <h5>Instant Notifications</h5>
+                        <p>Get real-time alerts for messages, calls, and group updates so you’re always in the loop.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card" style="background:#fff; color:#19376d;">
+                        <i class="ti-cloud" style="color:#7ec8e3;"></i>
+                        <h5>Cloud Sync</h5>
+                        <p>Access your chats and files across all devices seamlessly. Stay connected everywhere.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card" style="background:#fff; color:#19376d;">
+                        <i class="ti-world" style="color:#7ec8e3;"></i>
+                        <h5>Global Reach</h5>
+                        <p>Connect with anyone, anywhere. QT Connect bridges distances and brings people together.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+ <footer>
   <div class="footer-main">
     <div class="container">
 		<div class="text-center py-4">
@@ -369,25 +408,51 @@
 
 </footer>
 
-
   <!-- To Top -->
-  <div class="scroll-top-to">
+<button id="scrollTopBtn" class="scroll-top-to" aria-label="Scroll to top" style="
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 999;
+    background: #19376d;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    box-shadow: 0 4px 16px rgba(20,40,80,0.18);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, box-shadow 0.2s;
+    font-size: 2rem;
+">
     <i class="ti-angle-up"></i>
-  </div>
-  
-  <!-- JAVASCRIPTS -->
-  <script src="plugins/jquery/jquery.min.js"></script>
-  <script src="plugins/bootstrap/bootstrap.min.js"></script>
-  <script src="plugins/slick/slick.min.js"></script>
-  <script src="plugins/fancybox/jquery.fancybox.min.js"></script>
-  <script src="plugins/syotimer/jquery.syotimer.min.js"></script>
-  <script src="plugins/aos/aos.js"></script>
-  <!-- google map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgeuuDfRlweIs7D6uo4wdIHVvJ0LonQ6g"></script>
-  <script src="plugins/google-map/gmap.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  
-  <script src="js/script.js"></script>
+</button>
+<script>
+    const scrollBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', function() {
+        scrollBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    });
+    scrollBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+       <script>
+            function detectOS() {
+                const ua = navigator.userAgent;
+                if (/Macintosh|Mac OS X/.test(ua)) return {os: "mac", text: "MacOS", icon: "ti-apple", url: "https://drive.google.com/file/d/1pTFz0pO7FRNboG0HG1MB6oE0-RxAolf5/view"};
+                if (/Windows/.test(ua)) return {os: "windows", text: "Windows", icon: "ti-microsoft-alt", url: "https://drive.google.com/file/d/1SIcU_7aao4IFa3fYr9WhZjvuNZqpQO7m/view"};
+                if (/Linux/.test(ua)) return {os: "linux", text: "Linux", icon: "ti-linux", url: "https://drive.google.com/file/d/17YS4nei24aP25RsvhXkZ655Pc16FC4zn/view?usp=sharing"};
+                if (/iPhone|iPad|iPod/.test(ua)) return {os: "ios", text: "iPhone", icon: "ti-apple", url: "https://apps.apple.com/us/app/qtconnect-2-0/id6743532476"};
+                if (/Android/.test(ua)) return {os: "android", text: "Android", icon: "ti-android", url: "https://play.google.com/store/apps/details?id=com.qtsoftware.qtconnect"};
+                return {os: "desktop", text: "Desktop", icon: "ti-desktop", url: "https://drive.google.com/file/d/1pTFz0pO7FRNboG0HG1MB6oE0-RxAolf5/view"};
+            }
+            const mainBtn = document.getElementById('main-download-btn');
+            const os = detectOS();
+            mainBtn.href = os.url;
+            mainBtn.innerHTML = `<i class="${os.icon}"></i> ${os.text}`;
+            </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
