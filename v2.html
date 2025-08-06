@@ -368,7 +368,6 @@ download the app by clicking on the button below.</p>
             <h2>Download QT Connect for Desktop</h2>
             <p>To use the QT Connect App on the Desktop,<br>
 Click on one of the buttons below that corresponds to the Operating System You are using.</p>
-            <div class="d-block d-sm-flex flex-wrap justify-content-center gap-2" id="desktop-download-buttons"></div>
                 <a href="https://drive.google.com/file/d/1pTFz0pO7FRNboG0HG1MB6oE0-RxAolf5/view" class="btn btn-rounded-icon" id="mac-btn"><i class="ti-apple"></i> MacOS</a>
                 <a href="https://drive.google.com/file/d/17YS4nei24aP25RsvhXkZ655Pc16FC4zn/view?usp=sharing" class="btn btn-rounded-icon" id="linux-btn"><i class="ti-linux"></i> Linux</a>
                 <a href="https://drive.google.com/file/d/1SIcU_7aao4IFa3fYr9WhZjvuNZqpQO7m/view" class="btn btn-rounded-icon" id="windows-btn"><i class="ti-microsoft-alt"></i> Windows</a>
@@ -506,21 +505,7 @@ document.addEventListener("DOMContentLoaded", function () {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 </script>
-       <script>
-            function detectOS() {
-                const ua = navigator.userAgent;
-                if (/Macintosh|Mac OS X/.test(ua)) return {os: "mac", text: "MacOS", icon: "ti-apple", url: "https://drive.google.com/file/d/1pTFz0pO7FRNboG0HG1MB6oE0-RxAolf5/view"};
-                if (/Windows/.test(ua)) return {os: "windows", text: "Windows", icon: "ti-microsoft-alt", url: "https://drive.google.com/file/d/1SIcU_7aao4IFa3fYr9WhZjvuNZqpQO7m/view"};
-                if (/Linux/.test(ua)) return {os: "linux", text: "Linux", icon: "ti-linux", url: "https://drive.google.com/file/d/17YS4nei24aP25RsvhXkZ655Pc16FC4zn/view?usp=sharing"};
-                if (/iPhone|iPad|iPod/.test(ua)) return {os: "ios", text: "iPhone", icon: "ti-apple", url: "https://apps.apple.com/us/app/qtconnect-2-0/id6743532476"};
-                if (/Android/.test(ua)) return {os: "android", text: "Android", icon: "ti-android", url: "https://play.google.com/store/apps/details?id=com.qtsoftware.qtconnect"};
-                return {os: "desktop", text: "Desktop", icon: "ti-desktop", url: "https://drive.google.com/file/d/1pTFz0pO7FRNboG0HG1MB6oE0-RxAolf5/view"};
-            }
-            const mainBtn = document.getElementById('main-download-btn');
-            const os = detectOS();
-            mainBtn.href = os.url;
-            mainBtn.innerHTML = `<i class="${os.icon}"></i> ${os.text}`;
-            </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
   AOS.init();
