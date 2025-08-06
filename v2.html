@@ -244,13 +244,13 @@
             </p>
             <div id="download-buttons" class="d-flex flex-wrap justify-content-center gap-2 mt-4">
                 <a id="main-download-btn" href="#" class="btn btn-rounded-icon shadow-sm">
-                    <i class="ti-desktop"></i> Desktop
+                    <i class="ti-desktop" id="mac-btn"></i> Desktop
                 </a>
                 <a href="https://apps.apple.com/us/app/qtconnect-2-0/id6743532476" class="btn btn-rounded-icon shadow-sm">
-                    <i class="ti-apple"></i> iPhone
+                    <i class="ti-apple" id="ios-btn"></i> iPhone
                 </a>
                 <a href="https://play.google.com/store/apps/details?id=com.qtsoftware.qtconnect" class="btn btn-rounded-icon shadow-sm">
-                    <i class="ti-android"></i> Android
+                    <i class="ti-android" id="android-btn"></i> Android
                 </a>
             </div>
         </div>
@@ -373,34 +373,33 @@ Click on one of the buttons below that corresponds to the Operating System You a
                 <a href="https://drive.google.com/file/d/17YS4nei24aP25RsvhXkZ655Pc16FC4zn/view?usp=sharing" class="btn btn-rounded-icon" id="linux-btn"><i class="ti-linux"></i> Linux</a>
                 <a href="https://drive.google.com/file/d/1SIcU_7aao4IFa3fYr9WhZjvuNZqpQO7m/view" class="btn btn-rounded-icon" id="windows-btn"><i class="ti-microsoft-alt"></i> Windows</a>
             </div>
-            <script>
-                // Shift the button matching the user's OS to the front (including iOS)
-                (function() {
-                    function getOS() {
-                        const ua = navigator.userAgent;
-                        if (/iPhone|iPad|iPod/.test(ua)) return "ios";
-                        if (/Macintosh|Mac OS X/.test(ua)) return "mac";
-                        if (/Windows/.test(ua)) return "windows";
-                        if (/Linux/.test(ua)) return "linux";
-                        return null;
-                    }
-                    const os = getOS();
-                    const container = document.getElementById('desktop-download-buttons');
-                    if (os === "ios") {
-                        // For iOS, show a special button/link
-                        const iosBtn = document.createElement('a');
-                        iosBtn.href = "https://apps.apple.com/us/app/qtconnect-2-0/id6743532476";
-                        iosBtn.className = "btn btn-rounded-icon";
-                        iosBtn.innerHTML = '<i class="ti-apple"></i> iPhone (iOS)';
-                        container.prepend(iosBtn);
-                    } else if (os) {
-                        const btn = document.getElementById(os + '-btn');
-                        if (btn) {
-                            container.prepend(btn);
-                        }
-                    }
-                })();
-            </script>
+      <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const userAgent = navigator.userAgent.toLowerCase();
+    const container = document.getElementById("desktop-download-buttons");
+
+    let osBtnId = "";
+
+    if (/android/.test(userAgent)) {
+        osBtnId = "android-btn";
+    } else if (/iphone|ipad|ipod/.test(userAgent)) {
+        osBtnId = "ios-btn";
+    } else if (/mac/.test(userAgent)) {
+        osBtnId = "mac-btn";
+    } else if (/win/.test(userAgent)) {
+        osBtnId = "windows-btn";
+    } else if (/linux/.test(userAgent)) {
+        osBtnId = "linux-btn";
+    }
+
+    if (osBtnId) {
+        const btn = document.getElementById(osBtnId);
+        if (btn) {
+            container.prepend(btn); // Move detected OS button to the front
+        }
+    }
+});
+</script>
         </div>
     </section>
     <!-- Stay Up Connected Section -->
