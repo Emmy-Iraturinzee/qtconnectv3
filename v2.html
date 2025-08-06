@@ -368,11 +368,31 @@ download the app by clicking on the button below.</p>
             <h2>Download QT Connect for Desktop</h2>
             <p>To use the QT Connect App on the Desktop,<br>
 Click on one of the buttons below that corresponds to the Operating System You are using.</p>
-            <div class="d-block d-sm-flex flex-wrap justify-content-center gap-2">
-                <a href="https://drive.google.com/file/d/1pTFz0pO7FRNboG0HG1MB6oE0-RxAolf5/view" class="btn btn-rounded-icon  "><i class="ti-apple"></i> MacOS</a>
-                <a href="https://drive.google.com/file/d/17YS4nei24aP25RsvhXkZ655Pc16FC4zn/view?usp=sharing" class="btn btn-rounded-icon  "><i class="ti-linux"></i> Linux</a>
-                <a href="https://drive.google.com/file/d/1SIcU_7aao4IFa3fYr9WhZjvuNZqpQO7m/view" class="btn btn-rounded-icon"><i class="ti-microsoft-alt"></i> Windows</a>
+            <div class="d-block d-sm-flex flex-wrap justify-content-center gap-2" id="desktop-download-buttons"></div>
+                <a href="https://drive.google.com/file/d/1pTFz0pO7FRNboG0HG1MB6oE0-RxAolf5/view" class="btn btn-rounded-icon" id="mac-btn"><i class="ti-apple"></i> MacOS</a>
+                <a href="https://drive.google.com/file/d/17YS4nei24aP25RsvhXkZ655Pc16FC4zn/view?usp=sharing" class="btn btn-rounded-icon" id="linux-btn"><i class="ti-linux"></i> Linux</a>
+                <a href="https://drive.google.com/file/d/1SIcU_7aao4IFa3fYr9WhZjvuNZqpQO7m/view" class="btn btn-rounded-icon" id="windows-btn"><i class="ti-microsoft-alt"></i> Windows</a>
             </div>
+            <script>
+                // Shift the button matching the user's OS to the front
+                (function() {
+                    function getOS() {
+                        const ua = navigator.userAgent;
+                        if (/Macintosh|Mac OS X/.test(ua)) return "mac";
+                        if (/Windows/.test(ua)) return "windows";
+                        if (/Linux/.test(ua)) return "linux";
+                        return null;
+                    }
+                    const os = getOS();
+                    if (os) {
+                        const container = document.getElementById('desktop-download-buttons');
+                        const btn = document.getElementById(os + '-btn');
+                        if (btn) {
+                            container.prepend(btn);
+                        }
+                    }
+                })();
+            </script>
         </div>
     </section>
     <!-- Stay Up Connected Section -->
