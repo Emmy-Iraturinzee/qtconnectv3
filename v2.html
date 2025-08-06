@@ -374,18 +374,26 @@ Click on one of the buttons below that corresponds to the Operating System You a
                 <a href="https://drive.google.com/file/d/1SIcU_7aao4IFa3fYr9WhZjvuNZqpQO7m/view" class="btn btn-rounded-icon" id="windows-btn"><i class="ti-microsoft-alt"></i> Windows</a>
             </div>
             <script>
-                // Shift the button matching the user's OS to the front
+                // Shift the button matching the user's OS to the front (including iOS)
                 (function() {
                     function getOS() {
                         const ua = navigator.userAgent;
+                        if (/iPhone|iPad|iPod/.test(ua)) return "ios";
                         if (/Macintosh|Mac OS X/.test(ua)) return "mac";
                         if (/Windows/.test(ua)) return "windows";
                         if (/Linux/.test(ua)) return "linux";
                         return null;
                     }
                     const os = getOS();
-                    if (os) {
-                        const container = document.getElementById('desktop-download-buttons');
+                    const container = document.getElementById('desktop-download-buttons');
+                    if (os === "ios") {
+                        // For iOS, show a special button/link
+                        const iosBtn = document.createElement('a');
+                        iosBtn.href = "https://apps.apple.com/us/app/qtconnect-2-0/id6743532476";
+                        iosBtn.className = "btn btn-rounded-icon";
+                        iosBtn.innerHTML = '<i class="ti-apple"></i> iPhone (iOS)';
+                        container.prepend(iosBtn);
+                    } else if (os) {
                         const btn = document.getElementById(os + '-btn');
                         if (btn) {
                             container.prepend(btn);
